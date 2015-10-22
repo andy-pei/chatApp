@@ -1,6 +1,8 @@
+/bootstrap/compiled.php
 /vendor
-/node_modules
-Homestead.yaml
-Homestead.json
-.env
+.DS_Store
+/nbproject
 .idea
+atlassian-ide-plugin.xml
+.vagrant
+.env
