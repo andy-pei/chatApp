@@ -22,8 +22,8 @@ class ChatController extends Controller
      */
     public function index()
     {
-        $user_id = Auth::user()->id;
-        return view('chat.index')->with('user_id', $user_id);
+        $user = Auth::user();
+        return view('chat.index')->with('user', $user);
     }
 
     /**
@@ -93,5 +93,17 @@ class ChatController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function typing() {
+
+        $user = Auth::user();
+        $msg = Input::get('msg');
+        $pusher = new Pusher(Config::get('services.pusher.key'), Config::get('services.pusher.secret'), Config::get('services.pusher.id'));
+        $pusher->trigger('my-channel', 'isTyping', array('message' =>$msg, 'user_id' => $user->id) );
+
+        return 'Done';
+
+
     }
 }
