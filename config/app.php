@@ -146,6 +146,11 @@ return [
         App\Providers\RouteServiceProvider::class,
         'Illuminate\Html\HtmlServiceProvider',
 
+        /*
+         * Custom Service Providers...
+         */
+        'App\Providers\RepositoryServiceProvider',
+
     ],
 
     /*

@@ -6,9 +6,7 @@
 
 //
 
-Route::get('/', function() {
-    return redirect('/chat');
-});
+Route::get('/', 'WelcomeController@index');
 Route::get('/chat', 'ChatController@index');
 Route::post('/chat', 'ChatController@store');
 
@@ -22,3 +20,6 @@ Route::get('auth/register', 'Auth\AuthController@getRegister');
 Route::post('auth/register', 'Auth\AuthController@postRegister');
 
 Route::post('/typing', 'ChatController@typing');
+
+//routes for posts
+Route::get('posts', 'PostsController@index');

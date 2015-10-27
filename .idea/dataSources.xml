@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
-  <component name="DataSourceManagerImpl" format="xml" hash="513089468">
+  <component name="DataSourceManagerImpl" format="xml" hash="4166267407">
     <data-source source="LOCAL" name="MySQL - chat@chat.dev" uuid="ea82b611-8b79-46e8-aa3a-183dbc72528a">
       <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
