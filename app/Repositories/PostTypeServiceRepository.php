@@ -35,7 +35,7 @@ class PostTypeServiceRepository implements PostTypeServiceRepositoryInterface
      * get all post types with paginate
      * @return mixed
      */
-    public function getAllTypePaginate() {
-        return $this->postTypeModel->all()->paginate();
+    public function getAllType() {
+        return $this->postTypeModel->all();
     }
 }

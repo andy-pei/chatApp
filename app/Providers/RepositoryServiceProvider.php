@@ -27,5 +27,9 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\PostServiceRepositoryInterface',
             'App\Repositories\PostServiceRepository'
         );
+        $this->app->bind(
+            'App\Repositories\Contracts\PostTypeServiceRepositoryInterface',
+            'App\Repositories\PostTypeServiceRepository'
+        );
     }
 }

@@ -32,7 +32,7 @@ class PostTypeService {
      *  get all post types with paginate
      * @return mixed
      */
-    public function getAllTypePaginate() {
-        return $this->postTypeServiceRepository->getAllTypePaginate();
+    public function getAllType() {
+        return $this->postTypeServiceRepository->getAllType();
     }
 }

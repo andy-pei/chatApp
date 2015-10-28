@@ -2,12 +2,19 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\PostService;
+use App\Services\PostTypeService;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 class PostsController extends Controller
 {
+    public function __construct(PostService $postService,
+                                PostTypeService $postTypeService) {
+        $this->postService = $postService;
+        $this->postTypeService = $postTypeService;
+    }
     /**
      * Display a listing of the resource.
      *
@@ -15,7 +22,9 @@ class PostsController extends Controller
      */
     public function index()
     {
+        $posts = $this->postService->getAllPostsPaginated();
 
+        return view('post.index');
     }
 
     /**
@@ -25,7 +34,8 @@ class PostsController extends Controller
      */
     public function create()
     {
-        //
+        $post_types = $this->postTypeService->getAllType()->toArray();
+        return view('post.create')->with('post_types', $post_types);
     }
 
     /**

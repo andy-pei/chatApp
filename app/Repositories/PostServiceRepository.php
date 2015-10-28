@@ -36,6 +36,6 @@ class PostServiceRepository implements PostServiceRepositoryInterface
      * @return mixed
      */
     public function getAllPostsPaginated() {
-        return $this->postModel->all()->paginate();
+        return $this->postModel->paginate();
     }
 }

@@ -29,7 +29,7 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Friends <span class="sr-only">(current)</span></a></li>
                 <li><a href="#">Contact Us</a></li>
-                <li><a href="post">Posts</a></li>
+                <li><a href="posts">Posts</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Dropdown <span class="caret"></span></a>
                     <ul class="dropdown-menu">
