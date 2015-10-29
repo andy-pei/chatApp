@@ -35,4 +35,18 @@ class PostTypeService {
     public function getAllType() {
         return $this->postTypeServiceRepository->getAllType();
     }
+
+    /**
+     * get all post types for select box
+     * @return mixed
+     */
+    public function getAllTypesForSelect() {
+        $post_types = $this->postTypeServiceRepository->getAllType();
+        $data = array();
+        foreach($post_types as $type) {
+            $data[$type->id] = $type->name;
+        }
+        return $data;
+    }
+
 }

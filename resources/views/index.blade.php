@@ -5,7 +5,7 @@
         <div class="jumbotron">
             <h1>Newcastle BBS</h1>
             <p class="lead">Newcastle BBS is a forum for people sharing information, exchanging ideas, creating posts, making friends etc. It is a place for people having fun!</p>
-            <p><a class="btn btn-lg btn-success" href="#" role="button">Sign up today</a></p>
+            <p><a class="btn btn-lg btn-success" href="/auth/register" role="button">Sign up today</a></p>
         </div>
 
         <div class="row marketing">

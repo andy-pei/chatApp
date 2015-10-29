@@ -23,8 +23,8 @@ class AuthController extends Controller
 
     use AuthenticatesAndRegistersUsers, ThrottlesLogins;
 
-    protected $redirectPath = '/chat';
-    protected $redirectAfterLogout = '/chat';
+    protected $redirectPath = '/';
+//    protected $redirectAfterLogout = '/posts';
 
 
     /**

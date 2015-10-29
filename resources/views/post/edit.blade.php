@@ -3,7 +3,7 @@
 @section('content')
 
     <div>
-    {!! Form::open(['url' => 'posts/store']) !!}
+        {!! Form::open(['url' => 'posts/store']) !!}
         {!! Form::label('title', 'Title') !!}
         {!! Form::input('text', 'title', '', array('class' => 'form-control')) !!}
         {!! Form::label('body', 'Body') !!}
@@ -12,7 +12,7 @@
         {!! Form::select('type_id', $post_types, '', array('class' => 'form-control')) !!}
         {!! Form::submit('Create', array('class' => 'form-control btn btn-primary')) !!}
         {!! Form::close() !!}
-        </div>
+    </div>
     <footer class="footer">
         <p>&copy; ABBYY Company 2015</p>
     </footer>

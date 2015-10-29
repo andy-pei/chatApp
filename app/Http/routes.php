@@ -24,3 +24,10 @@ Route::post('/typing', 'ChatController@typing');
 //routes for posts
 Route::get('posts', 'PostsController@index');
 Route::get('posts/create', 'PostsController@create');
+Route::post('posts/store', 'PostsController@store');
+
+//routes for post types
+Route::get('post-types', 'PostTypesController@index');
+Route::get('post-types/create', 'PostTypesController@create');
+Route::post('post-types/store', 'PostTypesController@store');
+

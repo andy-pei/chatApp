@@ -2,20 +2,17 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\PostService;
 use App\Services\PostTypeService;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
-use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
-class PostsController extends Controller
+class PostTypesController extends Controller
 {
-    public function __construct(PostService $postService,
-                                PostTypeService $postTypeService) {
+
+    public function __construct(PostTypeService $postTypeService) {
         $this->middleware('auth');
-        $this->postService = $postService;
         $this->postTypeService = $postTypeService;
     }
     /**
@@ -25,9 +22,9 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = $this->postService->getAllPostsPaginated();
+        $post_types = $this->postTypeService->getAllType();
 
-        return view('post.index')->with('posts', $posts);
+        return view('post.post_type.index')->with('post_types', $post_types);
     }
 
     /**
@@ -37,8 +34,7 @@ class PostsController extends Controller
      */
     public function create()
     {
-        $post_types = $this->postTypeService->getAllTypesForSelect();
-        return view('post.create')->with('post_types', $post_types);
+        return view('post.post_type.create');
     }
 
     /**
@@ -50,17 +46,12 @@ class PostsController extends Controller
     public function store(Request $request)
     {
         $this->validate($request, [
-            'title' => 'required | max:255',
-            'body' => 'required',
-            'type_id' => 'required'
+            'name' => 'required | max:255'
         ]);
 
         $data = array_except(Input::all(), '_token');
-        $data['user_id'] = Auth::user()->id;
-
-        $post = $this->postService->createPost($data);
-
-        return redirect('posts');
+        $post_type = $this->postTypeService->createType($data);
+        return redirect('post-types');
     }
 
     /**
