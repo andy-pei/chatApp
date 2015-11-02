@@ -1,7 +1,8 @@
 <html>
 <head>
     <meta name="csrf-token" content="{{ csrf_token() }}"/>
-    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/bootstrap.min.css">
+    <link rel="stylesheet" href="/css/app.css">
     <style>
         input, select, textarea {
             font-size: 16px;
@@ -29,7 +30,7 @@
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Friends <span class="sr-only">(current)</span></a></li>
-                <li><a href="#">Contact Us</a></li>
+                <li><a href="{{URL::to('chat')}}">Chat Room</a></li>
                 <li><a href="{{URL::to('posts')}}">Posts</a></li>
                 <li><a href="{{URL::to('post-types')}}">Post Types</a></li>
                 <li class="dropdown">
@@ -58,14 +59,10 @@
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Action</a></li>
-                            <li><a href="#">Another action</a></li>
-                            <li><a href="#">Something else here</a></li>
-                            <li role="separator" class="divider"></li>
-                            <li><a href="#">Separated link</a></li>
+                            <li><a href="#">Edit</a></li>
+                            <li><a href="auth/logout">Logout</a></li>
                         </ul>
                     </li>
-                    <li><a href="auth/logout">Logout</a></li>
                     @else
                     <li><a href="auth/login">Login</a></li>
                 @endif
@@ -81,4 +78,5 @@
 </body>
 
 <script src="//js.pusher.com/3.0/pusher.min.js"></script>
-<script src="//code.jquery.com/jquery-1.11.3.min.js"></script>
+<script src="/js/jquery-2.1.4.min.js"></script>
+<script src="/js/bootstrap.min.js"></script>

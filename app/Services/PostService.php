@@ -35,4 +35,23 @@ class PostService {
     public function getAllPostsPaginated() {
         return $this->postServiceRepository->getAllPostsPaginated();
     }
+
+    /**
+     * delete post id
+     * @param $id
+     * @return mixed
+     */
+    public function deletePost($id) {
+        return $this->postServiceRepository->deletePost($id);
+    }
+
+    /**
+     * update post by id
+     * @param $id
+     * @param $data
+     * @return mixed
+     */
+    public function updatePost($id, $data) {
+        return $this->postServiceRepository->updatePost($id, $data);
+    }
 }

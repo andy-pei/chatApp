@@ -82,7 +82,10 @@ class PostsController extends Controller
      */
     public function edit($id)
     {
-        //
+        $post = $this->postService->getPostById($id);
+        $post_types = $this->postTypeService->getAllTypesForSelect();
+        return view('post.edit')->with(['post' => $post,
+                                        'post_types' => $post_types]);
     }
 
     /**
@@ -94,7 +97,16 @@ class PostsController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $this->validate($request, [
+            'title' => 'required | max:255',
+            'body' => 'required',
+            'type_id' => 'required'
+        ]);
+
+        $data = array_except(Input::all(), '_token');
+        $this->postService->updatePost($id, $data);
+
+        return redirect('posts');
     }
 
     /**
@@ -105,6 +117,8 @@ class PostsController extends Controller
      */
     public function destroy($id)
     {
-        //
+        $this->postService->deletePost($id);
+
+        return redirect('posts');
     }
 }

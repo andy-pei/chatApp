@@ -9,12 +9,24 @@
         </div>
     </div>
     <div class="row" style="margin-top: 20px; height: 100px;">
-        <div class="col-xs-6">
+        <div class="col-md-12">
             {!! Form::open() !!}
             {!! csrf_field() !!}
-            {!! Form::input('text', 'msg', '', array('id'=>'msg', 'class' => 'form-control input-lg"', 'style' => 'font-size: 20px;')) !!}
+            <div class="form-group">
+                {!! Form::input('text', 'msg', '', array('id'=>'msg', 'class' => 'form-control input-lg"')) !!}
+            </div>
+
             <p id="typing"></p>
-            {!! Form::button('Send', array('id' => 'send', 'class' => 'btn btn-primary form-control')) !!}
+
+            <div class='form-group'>
+                <div class="col-md-6">
+                    <a href="{{URL::to('/')}}" class="form-control btn btn-danger"><p>Back</p></a>
+                </div>
+
+                <div class="col-md-6">
+                    {!! Form::button('Send', array('id' => 'send', 'class' => 'btn btn-primary form-control')) !!}
+                </div>
+            </div>
             {!! Form::input('hidden', 'user_id', $user->id, array('id' => 'user_id')) !!}
             {!! Form::input('hidden', 'user_name', $user->name, array('id' => 'user_name')) !!}
 
@@ -43,7 +55,7 @@
 
             //listen if a user is typing
             channel.bind('isTyping', function (data) {
-                if($('#user_id').val() != data.user_id) {
+                if ($('#user_id').val() != data.user_id) {
                     $('#typing').text(data.message);
                 }
             });

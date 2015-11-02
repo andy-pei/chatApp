@@ -25,8 +25,8 @@
                     <td>{{$post->title}}</td>
                     <td>{{$post->body}}</td>
                     <td>{{($post->type != null) ? $post->type->name : '-'}}</td>
-                    <td><a href="{{URL::to('post-types/edit')}}"><button class="btn btn-primary">Edit</button></a></td>
-                    <td><a href="{{URL::to('post-types/delete')}}"><button class="btn btn-primary">Delete</button></a></td>
+                    <td><a href="{{URL::to('posts/edit/'.$post->id)}}"><button class="btn btn-primary">Edit</button></a></td>
+                    <td><a href="{{URL::to('posts/delete/'.$post->id)}}"><button class="btn btn-primary">Delete</button></a></td>
                 </tr>
             @endforeach
         </table>

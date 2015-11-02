@@ -25,6 +25,10 @@ Route::post('/typing', 'ChatController@typing');
 Route::get('posts', 'PostsController@index');
 Route::get('posts/create', 'PostsController@create');
 Route::post('posts/store', 'PostsController@store');
+Route::get('posts/delete/{id}', 'PostsController@destroy');
+Route::get('posts/edit/{id}', 'PostsController@edit');
+Route::post('posts/store/{id}', 'PostsController@update');
+
 
 //routes for post types
 Route::get('post-types', 'PostTypesController@index');

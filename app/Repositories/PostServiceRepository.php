@@ -38,4 +38,25 @@ class PostServiceRepository implements PostServiceRepositoryInterface
     public function getAllPostsPaginated() {
         return $this->postModel->paginate();
     }
+
+    /**
+     * delete post by id
+     * @param $id
+     * @return mixed
+     */
+    public function deletePost($id) {
+        return $this->postModel->where('id', $id)
+                    ->delete();
+    }
+
+    /**
+     * update post by id
+     * @param $id
+     * @param $data
+     * @return mixed
+     */
+    public function updatePost($id, $data) {
+        return $this->postModel->where('id', $id)
+                               ->update($data);
+    }
 }
