@@ -10,6 +10,10 @@ Route::get('/', 'WelcomeController@index');
 Route::get('/chat', 'ChatController@index');
 Route::post('/chat', 'ChatController@store');
 
+// user routes
+Route::get('users/edit', 'UserController@edit');
+Route::post('users/update', 'UserController@update');
+
 // Authentication routes...
 Route::get('auth/login', 'Auth\AuthController@getLogin');
 Route::post('auth/login', 'Auth\AuthController@postLogin');

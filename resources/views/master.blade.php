@@ -55,11 +55,12 @@
             </form>
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
+                    <li><img src="{{Auth::user()->icon_url}}" style="max-height: 40px; max-width: 40px; margin-top: 15px;" class="img-circle"></li>
                     <li class="dropdown">
                         <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                            aria-expanded="false">{{Auth::user()->name}} <span class="caret"></span></a>
                         <ul class="dropdown-menu">
-                            <li><a href="#">Edit</a></li>
+                            <li><a href="{{URL::to('users/edit')}}">Edit Profile</a></li>
                             <li><a href="auth/logout">Logout</a></li>
                         </ul>
                     </li>
