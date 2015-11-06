@@ -35,8 +35,9 @@ class PostServiceRepository implements PostServiceRepositoryInterface
      * get all posts with paginate
      * @return mixed
      */
-    public function getAllPostsPaginated() {
-        return $this->postModel->paginate();
+    public function getAllUserPostsPaginated($user_id) {
+        return $this->postModel->where('user_id', $user_id)
+                               ->paginate();
     }
 
     /**

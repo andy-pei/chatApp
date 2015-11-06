@@ -32,18 +32,14 @@
                 <li class="active"><a href="#">Friends <span class="sr-only">(current)</span></a></li>
                 <li><a href="{{URL::to('chat')}}">Chat Room</a></li>
                 <li><a href="{{URL::to('posts')}}">Posts</a></li>
-                <li><a href="{{URL::to('post-types')}}">Post Types</a></li>
+                <li><a href="{{URL::to('post-types')}}">Manage Types</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
-                       aria-expanded="false">Dropdown <span class="caret"></span></a>
+                       aria-expanded="false">Post Types <span class="caret"></span></a>
                     <ul class="dropdown-menu">
-                        <li><a href="#">Action</a></li>
-                        <li><a href="#">Another action</a></li>
-                        <li><a href="#">Something else here</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">Separated link</a></li>
-                        <li role="separator" class="divider"></li>
-                        <li><a href="#">One more separated link</a></li>
+                        @foreach($post_types as $type)
+                            <li><a href="#">{{$type->name}}</a></li>
+                        @endforeach
                     </ul>
                 </li>
             </ul>

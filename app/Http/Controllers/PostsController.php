@@ -25,7 +25,8 @@ class PostsController extends Controller
      */
     public function index()
     {
-        $posts = $this->postService->getAllPostsPaginated();
+        $user_id = Auth::user()->id;
+        $posts = $this->postService->getAllUserPostsPaginated($user_id);
 
         return view('post.index')->with('posts', $posts);
     }

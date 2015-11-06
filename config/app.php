@@ -150,6 +150,7 @@ return [
          * Custom Service Providers...
          */
         'App\Providers\RepositoryServiceProvider',
+        'App\Providers\ComposerServiceProvider',
 
     ],
 

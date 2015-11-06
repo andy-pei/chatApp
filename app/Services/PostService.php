@@ -32,8 +32,8 @@ class PostService {
      * get all posts with paginate
      * @return mixed
      */
-    public function getAllPostsPaginated() {
-        return $this->postServiceRepository->getAllPostsPaginated();
+    public function getAllUserPostsPaginated($user_id) {
+        return $this->postServiceRepository->getAllUserPostsPaginated($user_id);
     }
 
     /**
