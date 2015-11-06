@@ -3,7 +3,6 @@
 .DS_Store
 /nbproject
 .idea
-.idea/
 atlassian-ide-plugin.xml
 .vagrant
 .env
