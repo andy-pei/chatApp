@@ -31,14 +31,21 @@
             <ul class="nav navbar-nav">
                 <li class="active"><a href="#">Friends <span class="sr-only">(current)</span></a></li>
                 <li><a href="{{URL::to('chat')}}">Chat Room</a></li>
-                <li><a href="{{URL::to('posts')}}">Posts</a></li>
+                <li class="dropdown">
+                    <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
+                       aria-expanded="false">posts <span class="caret"></span></a>
+                    <ul class="dropdown-menu">
+                        <li><a href="{{URL::to('posts')}}">My Posts</a></li>
+                        <li><a href="{{URL::to('all-posts')}}">All Posts</a></li>
+                    </ul>
+                </li>
                 <li><a href="{{URL::to('post-types')}}">Manage Types</a></li>
                 <li class="dropdown">
                     <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true"
                        aria-expanded="false">Post Types <span class="caret"></span></a>
                     <ul class="dropdown-menu">
                         @foreach($post_types as $type)
-                            <li><a href="#">{{$type->name}}</a></li>
+                            <li><a href="{{URL::to('post-type/'.$type->id.'/posts')}}">{{$type->name}}</a></li>
                         @endforeach
                     </ul>
                 </li>
@@ -47,6 +54,7 @@
                 <div class="form-group">
                     <input type="text" class="form-control" placeholder="Search">
                 </div>
+
                 <button type="submit" class="btn btn-default">Submit</button>
             </form>
             <ul class="nav navbar-nav navbar-right">
@@ -77,3 +85,4 @@
 <script src="//js.pusher.com/3.0/pusher.min.js"></script>
 <script src="/js/jquery-2.1.4.min.js"></script>
 <script src="/js/bootstrap.min.js"></script>
+<script src="/js/app.js"></script>

@@ -2,18 +2,21 @@
 
 namespace App\Http\Controllers;
 
-use App\Services\PostTypeService;
+use App\Services\CommentService;
+use App\Services\PostService;
 use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Input;
 
-class PostTypesController extends Controller
+class CommentsController extends Controller
 {
 
-    public function __construct(PostTypeService $postTypeService) {
-        $this->middleware('auth');
-        $this->postTypeService = $postTypeService;
+    public function __construct(CommentService $commentService,
+                                PostService $postService) {
+        $this->commentService = $commentService;
+        $this->postServie = $postService;
     }
     /**
      * Display a listing of the resource.
@@ -22,9 +25,7 @@ class PostTypesController extends Controller
      */
     public function index()
     {
-        $post_types = $this->postTypeService->getAllType();
-
-        return view('post.post_type.index')->with('post_types', $post_types);
+        //
     }
 
     /**
@@ -34,7 +35,7 @@ class PostTypesController extends Controller
      */
     public function create()
     {
-        return view('post.post_type.create');
+
     }
 
     /**
@@ -43,15 +44,18 @@ class PostTypesController extends Controller
      * @param  \Illuminate\Http\Request  $request
      * @return \Illuminate\Http\Response
      */
-    public function store(Request $request)
+    public function store(Request $request, $post_id)
     {
-        $this->validate($request, [
-            'name' => 'required | max:255'
-        ]);
-
+        $user_id = Auth::user()->id;
         $data = array_except(Input::all(), '_token');
-        $post_type = $this->postTypeService->createType($data);
-        return redirect('post-types');
+        $data['user_id'] = $user_id;
+        $data['post_id'] = $post_id;
+
+        $this->commentService->createComment($data);
+
+        $post = $this->postServie->getPostById($post_id);
+
+        return redirect('post/'.$post_id)->with(['post' => $post]);
     }
 
     /**
@@ -97,11 +101,5 @@ class PostTypesController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function getPostsByType($type_id) {
-        $posts = $this->postTypeService->getPostsByType($type_id);
-
-        return view('post.index')->with(['posts' => $posts]);
     }
 }

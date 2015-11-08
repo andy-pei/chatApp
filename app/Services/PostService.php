@@ -54,4 +54,12 @@ class PostService {
     public function updatePost($id, $data) {
         return $this->postServiceRepository->updatePost($id, $data);
     }
+
+    /**
+     * get all posts
+     * @return mixed
+     */
+    public function getAllPosts() {
+        return $this->postServiceRepository->getAllPostsPaginate();
+    }
 }

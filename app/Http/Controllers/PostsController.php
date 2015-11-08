@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CommentService;
 use App\Services\PostService;
 use App\Services\PostTypeService;
 use Illuminate\Http\Request;
@@ -13,10 +14,12 @@ use Illuminate\Support\Facades\Input;
 class PostsController extends Controller
 {
     public function __construct(PostService $postService,
-                                PostTypeService $postTypeService) {
+                                PostTypeService $postTypeService,
+                                CommentService $commentService) {
         $this->middleware('auth');
         $this->postService = $postService;
         $this->postTypeService = $postTypeService;
+        $this->commentService = $commentService;
     }
     /**
      * Display a listing of the resource.
@@ -72,7 +75,11 @@ class PostsController extends Controller
      */
     public function show($id)
     {
-        //
+        $post = $this->postService->getPostById($id);
+        $comments = $this->commentService->getPostComments($id);
+
+        return view('post.view')->with(['post' => $post,
+                                        'comments' => $comments]);
     }
 
     /**
@@ -105,6 +112,8 @@ class PostsController extends Controller
         ]);
 
         $data = array_except(Input::all(), '_token');
+//        dd(nl2br(Input::get('body')));
+        $data['body'] = nl2br($data['body']);
         $this->postService->updatePost($id, $data);
 
         return redirect('posts');
@@ -121,5 +130,15 @@ class PostsController extends Controller
         $this->postService->deletePost($id);
 
         return redirect('posts');
+    }
+
+    /**
+     * get all posts in all types
+     * @return $this
+     */
+    public function getAllPosts() {
+        $posts = $this->postService->getAllPosts();
+
+        return view('post.index')->with(['posts' => $posts]);
     }
 }

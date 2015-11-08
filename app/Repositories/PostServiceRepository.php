@@ -60,4 +60,12 @@ class PostServiceRepository implements PostServiceRepositoryInterface
         return $this->postModel->where('id', $id)
                                ->update($data);
     }
+
+    /**
+     * get all posts
+     * @return mixed
+     */
+    public function getAllPostsPaginate() {
+        return $this->postModel->paginate();
+    }
 }

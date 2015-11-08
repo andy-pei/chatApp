@@ -35,5 +35,9 @@ class RepositoryServiceProvider extends ServiceProvider
             'App\Repositories\Contracts\UserRepositoryInterface',
             'App\Repositories\UserRepository'
         );
+        $this->app->bind(
+            'App\Repositories\Contracts\CommentRepositoryInterface',
+            'App\Repositories\CommentRepository'
+        );
     }
 }

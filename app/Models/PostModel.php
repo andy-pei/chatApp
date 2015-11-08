@@ -13,4 +13,8 @@ class PostModel extends Model
     public function type() {
         return $this->belongsTo('App\Models\PostTypeModel', 'type_id');
     }
+
+    public function author() {
+        return $this->belongsTo('App\Models\User', 'user_id', 'id');
+    }
 }

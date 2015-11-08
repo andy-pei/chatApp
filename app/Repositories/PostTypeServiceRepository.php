@@ -38,4 +38,15 @@ class PostTypeServiceRepository implements PostTypeServiceRepositoryInterface
     public function getAllType() {
         return $this->postTypeModel->all();
     }
+
+    /**
+     * get posts within a post type
+     * @param $type_id
+     * @return mixed
+     */
+    public function getPostsByType($type_id) {
+        $type = $this->postTypeModel->where('id', $type_id)->first();
+        $posts = $type->posts;
+        return $posts;
+    }
 }

@@ -32,10 +32,17 @@ Route::post('posts/store', 'PostsController@store');
 Route::get('posts/delete/{id}', 'PostsController@destroy');
 Route::get('posts/edit/{id}', 'PostsController@edit');
 Route::post('posts/store/{id}', 'PostsController@update');
+Route::get('all-posts', 'PostsController@getAllPosts');
+Route::get('post/{id}', 'PostsController@show');
+
 
 
 //routes for post types
 Route::get('post-types', 'PostTypesController@index');
 Route::get('post-types/create', 'PostTypesController@create');
 Route::post('post-types/store', 'PostTypesController@store');
+Route::get('post-type/{typeId}/posts', 'PostTypesController@getPostsByType');
 
+
+//routes for comments
+Route::post('post/{id}/comment/create', 'CommentsController@store');

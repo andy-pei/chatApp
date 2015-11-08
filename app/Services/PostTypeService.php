@@ -49,4 +49,13 @@ class PostTypeService {
         return $data;
     }
 
+    /**
+     * get posts within a post type
+     * @param $type_id
+     * @return mixed
+     */
+    public function getPostsByType($type_id) {
+        return $this->postTypeServiceRepository->getPostsByType($type_id);
+    }
+
 }
