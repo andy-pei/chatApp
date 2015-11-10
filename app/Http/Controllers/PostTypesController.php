@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Services\CommentService;
 use App\Services\PostTypeService;
 use Illuminate\Http\Request;
 use App\Http\Requests;
@@ -11,9 +12,11 @@ use Illuminate\Support\Facades\Input;
 class PostTypesController extends Controller
 {
 
-    public function __construct(PostTypeService $postTypeService) {
+    public function __construct(PostTypeService $postTypeService,
+                                CommentService $commentService) {
         $this->middleware('auth');
         $this->postTypeService = $postTypeService;
+        $this->commentService = $commentService;
     }
     /**
      * Display a listing of the resource.
@@ -102,6 +105,11 @@ class PostTypesController extends Controller
     public function getPostsByType($type_id) {
         $posts = $this->postTypeService->getPostsByType($type_id);
 
+        //get last comment for each post
+        foreach($posts as $post) {
+            $last_comment = $this->commentService->getLastComment($post->id);
+            $post->last_comment = $last_comment;
+        }
         return view('post.index')->with(['posts' => $posts]);
     }
 }

@@ -13,6 +13,7 @@
             </ul>
         </div>
     @endif
+
     <div>
         {!! Form::open(['url' => 'posts/store/'.$post->id]) !!}
         <div class="form-group">
@@ -22,7 +23,7 @@
 
         <div class="form-group">
             {!! Form::label('body', 'Body') !!}
-            {!! Form::textarea('body', $post->body, array('class' => 'form-control')) !!}
+            {!! Form::textarea('body', str_replace('<br />', '', $post->body), array('class' => 'form-control')) !!}
         </div>
 
         <div class="form-group">

@@ -34,4 +34,13 @@ class CommentService
     public function getPostComments($post_id) {
         return $this->commentRepository->getPostComments($post_id);
     }
+
+    /**
+     * get las comment for a post
+     * @param $post_id
+     * @return mixed
+     */
+    public function getLastComment($post_id) {
+        return $this->commentRepository->getLastComment($post_id);
+    }
 }

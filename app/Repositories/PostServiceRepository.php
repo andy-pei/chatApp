@@ -68,4 +68,14 @@ class PostServiceRepository implements PostServiceRepositoryInterface
     public function getAllPostsPaginate() {
         return $this->postModel->paginate();
     }
+
+    /**
+     * search posts by title
+     * @param $title
+     * @return mixed
+     */
+    public function searchPosts($title) {
+        return $this->postModel->where('title', 'LIKE', "%$title%")
+                                ->paginate();
+    }
 }

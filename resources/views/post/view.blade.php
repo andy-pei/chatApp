@@ -23,7 +23,7 @@
             <div class="col-sm-8">
                 <div class="panel panel-default">
                     <div class="panel-heading">
-                        <strong>{{$comment->auther->name}}</strong> <span class="text-muted">commented 5 days ago</span>
+                        <strong>{{$comment->auther->name}}</strong> <span class="text-muted">commented {{$comment->created_at->diffForHumans()}}</span>
                     </div>
                     <div class="panel-body">
                         {{$comment->comment}}
@@ -37,6 +37,7 @@
         <button id="comment-trigger" class="btn btn-primary">Comment</button>
 
         <div id="comment-form" class="hidden">
+
             {!! Form::open(['url' => 'post/'.$post->id.'/comment/create']) !!}
             <div class="form-group">
                 {!! Form::textarea('comment', '', array('class' => 'form-control')) !!}

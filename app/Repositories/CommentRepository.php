@@ -38,4 +38,14 @@ class CommentRepository implements CommentRepositoryInterface
         return $this->commentModel->where('post_id', $post_id)
                                   ->get();
     }
+
+    /**
+     * get last comment for a post
+     * @param $post_id
+     */
+    public function getLastComment($post_id) {
+        return $this->commentModel->where('post_id', $post_id)
+                                  ->orderBy('created_at', 'DESC')
+                                  ->first();
+    }
 }

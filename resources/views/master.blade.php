@@ -12,7 +12,7 @@
 
 </head>
 <body>
-<nav class="navbar navbar-default">
+<nav class="navbar navbar-default  navbar-fixed-top">
     <div class="container-fluid">
         <!-- Brand and toggle get grouped for better mobile display -->
         <div class="navbar-header">
@@ -50,13 +50,18 @@
                     </ul>
                 </li>
             </ul>
-            <form class="navbar-form navbar-left" role="search">
-                <div class="form-group">
-                    <input type="text" class="form-control" placeholder="Search">
-                </div>
+            {{--<form class="navbar-form navbar-left" role="search" action="{{URL::to('posts/search')}}" method="post">--}}
+                {{--<div class="form-group">--}}
+                    {{--<input type="text" name="title" class="form-control" placeholder="Search">--}}
+                {{--</div>--}}
 
-                <button type="submit" class="btn btn-default">Submit</button>
-            </form>
+                {{--<button type="submit" class="btn btn-default">Submit</button>--}}
+            {{--</form>--}}
+
+            {!! Form::open(['url' => 'posts/search', 'class' => 'navbar-form navbar-left']) !!}
+            {!! Form::input('text', 'title', '', array('class' => 'form-control', 'placeholder' => 'Search')) !!}
+            {!! Form::submit('Submit', array('class' => 'btn btn-default')) !!}
+            {!! Form::close() !!}
             <ul class="nav navbar-nav navbar-right">
                 @if(Auth::check())
                     <li><img src="{{Auth::user()->icon_url}}" style="max-height: 40px; max-width: 40px; margin-top: 15px;" class="img-circle"></li>

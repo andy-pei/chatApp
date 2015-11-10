@@ -13,4 +13,5 @@ interface CommentRepositoryInterface
 {
     public function createComment($data);
     public function getPostComments($post_id);
+    public function getLastComment($post_id);
 }

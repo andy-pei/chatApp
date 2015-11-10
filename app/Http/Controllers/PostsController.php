@@ -31,6 +31,12 @@ class PostsController extends Controller
         $user_id = Auth::user()->id;
         $posts = $this->postService->getAllUserPostsPaginated($user_id);
 
+        //get last comment for each post
+        foreach($posts as $post) {
+            $last_comment = $this->commentService->getLastComment($post->id);
+            $post->last_comment = $last_comment;
+        }
+
         return view('post.index')->with('posts', $posts);
     }
 
@@ -139,6 +145,23 @@ class PostsController extends Controller
     public function getAllPosts() {
         $posts = $this->postService->getAllPosts();
 
+        //get last comment for each post
+        foreach($posts as $post) {
+            $last_comment = $this->commentService->getLastComment($post->id);
+            $post->last_comment = $last_comment;
+        }
         return view('post.index')->with(['posts' => $posts]);
+    }
+
+    /**
+     * search posts by title
+     * @return \Illuminate\Http\RedirectResponse
+     */
+    public function searchPosts() {
+        $title = Input::get('title');
+
+        $posts = $this->postService->searchPosts($title);
+
+        return  view('post.index')->with(['posts' => $posts]);
     }
 }

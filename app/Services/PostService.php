@@ -62,4 +62,13 @@ class PostService {
     public function getAllPosts() {
         return $this->postServiceRepository->getAllPostsPaginate();
     }
+
+    /**
+     * search posts by title
+     * @param $title
+     * @return mixed
+     */
+    public function searchPosts($title) {
+        return $this->postServiceRepository->searchPosts($title);
+    }
 }

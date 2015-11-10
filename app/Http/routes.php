@@ -34,6 +34,7 @@ Route::get('posts/edit/{id}', 'PostsController@edit');
 Route::post('posts/store/{id}', 'PostsController@update');
 Route::get('all-posts', 'PostsController@getAllPosts');
 Route::get('post/{id}', 'PostsController@show');
+Route::post('posts/search', 'PostsController@searchPosts');
 
 
 
