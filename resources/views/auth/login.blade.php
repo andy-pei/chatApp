@@ -15,10 +15,18 @@
             {!! Form::input('password', 'password', old('name'), array('class' => 'form-control')) !!}
         </div>
 
-        <div class="form-group">
-            {!! Form::label('remember', 'Remember Me') !!}
-            {!! Form::input('checkbox', 'remember', old('name')) !!}
+        <div>
+            <div class="form-group col-lg-6">
+                {!! Form::label('remember', 'Remember Me') !!}
+                {!! Form::input('checkbox', 'remember', old('name')) !!}
+            </div>
+
+            <div class="form-group col-lg-6">
+                <a href="{{URL('password/email')}}"><b class="">Forget Password?</b></a>
+            </div>
         </div>
+
+
 
 
         <div class="form-group">
