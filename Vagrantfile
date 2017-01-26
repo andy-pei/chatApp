@@ -12,7 +12,9 @@ sudo debconf-set-selections <<< 'mysql-server mysql-server/root_password_again p
 
 sudo apt-get install -y vim curl python-software-properties
 sudo add-apt-repository -y ppa:ondrej/php5
-sudo add-apt-repository -y ppa:chris-lea/node.js
+
+# get latest notejs
+curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
 sudo apt-get update
 
 sudo apt-get install -y php5 apache2 libapache2-mod-php5 php5-curl php5-gd php5-mcrypt php5-readline mysql-server-5.5 php5-mysql git-core php5-xdebug memcached php5-memcached nodejs rubygems beanstalkd supervisor
@@ -128,3 +130,14 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   config.vm.network "private_network", ip: "192.168.33.20"
   config.vm.synced_folder ".", "/vagrant", :mount_options => ["dmode=777","fmode=666"]
 end
+
+# manually install node and marioneete process
+# curl -sL https://deb.nodesource.com/setup_4.x | sudo -E bash -
+# sudo apt-get install nodejs
+# npm install backbone.marionette underscore backbone --save
+# npm install underscore-template-loader --save --no-bin-links
+# add webpack.config.js to root directory
+# install Elixir  npm install --global gulp-cli    npm install --no-bin-links
+# install sass  sudo apt-get install rubygems-integration
+# sudo gem install sass
+# npm install node-sass --save --no-bin-links

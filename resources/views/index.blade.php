@@ -2,6 +2,10 @@
 
 @section('content')
 
+    <div id="test1">
+        <div id="welcomeregion"></div>
+    </div>
+
         <div class="jumbotron">
             <h1>Newcastle BBS</h1>
             <p class="lead">Newcastle BBS is a forum for people sharing information, exchanging ideas, creating posts, making friends etc. It is a place for people having fun!</p>
@@ -53,5 +57,7 @@
         <footer class="footer">
             <p>&copy; ABBYY Company 2015</p>
         </footer>
+
+        <script src="js/test.js"></script>
 
 @stop
